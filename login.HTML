@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #16324a;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            position: relative;
+        }
+
+        /* cabeçalho */
+        header {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        /* Estilo para a imagem do logo */
+        header img {
+            max-width: 100px; /* Ajuste conforme necessário */
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px; /* Largura fixa para o formulário */
+            position: relative; /* Adicionado para posicionamento da imagem */
+        }
+
+        .header img {
+            max-width: 100%;
+            margin-bottom: 10px; /* Adicionado espaçamento entre a imagem e os campos */
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        input[type="text"],
+        input[type="password"],
+        input[type="submit"] {
+            width: calc(100% - 20px); /* Ajuste de largura para os campos */
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        h2 {
+            text-align: center;
+            margin-top: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- Cabeçalho com o logo -->
+    <header>
+        <img src="{{ url_for('static', filename='logo.png') }}">
+    </header>
+    
+    <form action="/login" method="POST">
+        <div class="header">
+            <img src="{{ url_for('static', filename='titulo.png') }}">
+        </div>
+        {% if error %}
+            <p>{{ error }}</p>
+        {% endif %}
+        <label for="username">Usuário:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <label for="password">Senha:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <input type="submit" value="Login">
+    </form>
+</body>
+</html>

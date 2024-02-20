@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario Energia</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #16324a;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 50%; 
+        }
+
+        label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        select,
+        input[type="text"],
+        input[type="file"],
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            background-color: #4caf50;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        header img {
+            max-width: 100px; /* Ajuste o tamanho da imagem conforme necessário */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="{{ url_for('static', filename='logo.png') }}">
+    </header>
+
+    <form action="/processar_formulario" method="post" enctype="multipart/form-data">
+        <label for="meses">Selecione o mês:</label>
+        <select name="meses" id="meses" multiple>
+            <option value="janeiro">Janeiro</option>
+            <option value="fevereiro">Fevereiro</option>
+            <option value="marco">Março</option>
+            <option value="abril">Abril</option>
+            <option value="maio">Maio</option>
+            <option value="junho">Junho</option>
+            <option value="julho">Julho</option>
+            <option value="agosto">Agosto</option>
+            <option value="setembro">Setembro</option>
+            <option value="outubro">Outubro</option>
+            <option value="novembro">Novembro</option>
+            <option value="dezembro">Dezembro</option>
+
+        </select>
+
+        <label for="arquivo">Anexar evidência:</label>
+        <input type="file" name="arquivo" id="arquivo">
+
+        <label for="consumo_energia_mercado_livre">Consumo de Energia Mercado Livre:</label>
+        <input type="text" name="consumo_energia_mercado_livre" id="consumo_energia_mercado_livre" required>
+
+        <label for="producao_energia_gd">Produção de Energia GD:</label>
+        <input type="text" name="producao_energia_gd" id="producao_energia_gd" required>
+
+        <label for="total_kwh_2022">Total KWh 2022:</label>
+        <input type="text" name="total_kwh_2022" id="total_kwh_2022" required>
+
+        <input type="submit" value="Enviar">
+    </form>
+</body>
+</html>
